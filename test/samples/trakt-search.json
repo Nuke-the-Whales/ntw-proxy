@@ -1,0 +1,152 @@
+[
+  {
+    "type": "show",
+    "score": 578.54663,
+    "show": {
+      "title": "Game of Thrones",
+      "year": 2011,
+      "ids": {
+        "trakt": 1390,
+        "slug": "game-of-thrones",
+        "tvdb": 121361,
+        "imdb": "tt0944947",
+        "tmdb": 1399,
+        "tvrage": 24493
+      }
+    }
+  },
+  {
+    "type": "movie",
+    "score": 291.121,
+    "movie": {
+      "title": "The Throne",
+      "year": 2015,
+      "ids": {
+        "trakt": 196041,
+        "slug": "the-throne-2015",
+        "imdb": "tt4010918",
+        "tmdb": 315439
+      }
+    }
+  },
+  {
+    "type": "movie",
+    "score": 290.7014,
+    "movie": {
+      "title": "Throne of Blood",
+      "year": 1957,
+      "ids": {
+        "trakt": 2345,
+        "slug": "throne-of-blood-1957",
+        "imdb": "tt0050613",
+        "tmdb": 3777
+      }
+    }
+  },
+  {
+    "type": "movie",
+    "score": 270.35703,
+    "movie": {
+      "title": "Justice League: Throne of Atlantis",
+      "year": 2015,
+      "ids": {
+        "trakt": 191793,
+        "slug": "justice-league-throne-of-atlantis-2015",
+        "imdb": "tt3878542",
+        "tmdb": 297556
+      }
+    }
+  },
+  {
+    "type": "movie",
+    "score": 241.69994,
+    "movie": {
+      "title": "Throne of Elves",
+      "year": 2017,
+      "ids": {
+        "trakt": 254287,
+        "slug": "throne-of-elves-2017",
+        "imdb": "tt5425264",
+        "tmdb": 408355
+      }
+    }
+  },
+  {
+    "type": "show",
+    "score": 231.20605,
+    "show": {
+      "title": "After the Thrones",
+      "year": 2016,
+      "ids": {
+        "trakt": 106908,
+        "slug": "after-the-thrones",
+        "tvdb": 309875,
+        "imdb": "tt5665732",
+        "tmdb": 66346,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "type": "show",
+    "score": 228.75256,
+    "show": {
+      "title": "School of Thrones",
+      "year": 2013,
+      "ids": {
+        "trakt": 70117,
+        "slug": "school-of-thrones",
+        "tvdb": 268310,
+        "imdb": "tt2781552",
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "type": "movie",
+    "score": 225.2721,
+    "movie": {
+      "title": "Throne of Fire",
+      "year": 1983,
+      "ids": {
+        "trakt": 102182,
+        "slug": "throne-of-fire-1983",
+        "imdb": "tt0090166",
+        "tmdb": 157394
+      }
+    }
+  },
+  {
+    "type": "show",
+    "score": 216.18709,
+    "show": {
+      "title": "Gay of Thrones",
+      "year": 2013,
+      "ids": {
+        "trakt": 108159,
+        "slug": "gay-of-thrones",
+        "tvdb": 312618,
+        "imdb": "tt2946308",
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  },
+  {
+    "type": "show",
+    "score": 214.6975,
+    "show": {
+      "title": "King of Thrones",
+      "year": 1969,
+      "ids": {
+        "trakt": 73013,
+        "slug": "king-of-thrones",
+        "tvdb": 273385,
+        "imdb": null,
+        "tmdb": null,
+        "tvrage": null
+      }
+    }
+  }
+]

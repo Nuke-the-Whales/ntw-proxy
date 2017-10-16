@@ -4,6 +4,9 @@ const request = require('request')
 const service = require('express')()
 const validation = require('./validation')
 const config = require('../../config')
+const constants = require('../../constants')
+
+const { searchUrl, showUrl, posterUrl } = constants
 
 const searchHeaders = {
   'Content-Type': 'application/json',
@@ -16,10 +19,6 @@ const showQueries = {
     language: 'en-US',
     api_key: config.tmdb.apiKey
 }
-
-const searchUrl = 'https://api.trakt.tv/search/movie,show?query='
-const showUrl = 'https://api.themoviedb.org/3/find/'
-const posterUrl = 'https://image.tmdb.org/t/p/w185'
 
 const searchAll = (req, res, next) => {
   const url = `${searchUrl}${req.query.title}`
@@ -34,7 +33,17 @@ const searchAll = (req, res, next) => {
       next(e)
     }
 
-    return res.json(body)
+    const result = body
+      .filter(item => item[item.type].ids.imdb)
+      .map(item => {
+        item.imdb = item[item.type].ids.imdb
+        item.title = item[item.type].title
+        item.year = item[item.type].year
+        delete item[item.type]
+        return item
+      })
+
+    return res.json(result)
   });
 }
 
