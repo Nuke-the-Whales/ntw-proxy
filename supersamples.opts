@@ -1,0 +1,20 @@
+{
+  "baseUrl": "{{baseUrl}}",
+  "renderers": {
+    "html": {
+      "title": "Digital API cash withdrawal",
+      "outputFolder": "docs/html"
+    },
+    "postman": {
+      "title": "Api service (postman)",
+      "outputFile": "docs/postman.postman_collection",
+      "version": 2,
+      "generateTests": true,
+      "replace": {
+        "headers": {
+          "tabcorpauth": "{{token}}"
+        }
+      }
+    }
+  }
+}

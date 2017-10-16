@@ -1,0 +1,43 @@
+{
+  "name": "api-service-keno-withdrawal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "documentation": "./node_modules/.bin/mocha --reporter supersamples './test/docs'",
+    "test": "./node_modules/mocha/bin/mocha './test/**/*.spec.js' && ./node_modules/standard/bin/cmd.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2",
+    "standard": "^8.4.0",
+    "supersamples": "^1.2.0",
+    "supertest": "^2.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cjson": "^0.4.0",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "request": "^2.83.0",
+    "statuses": "^1.3.0",
+    "strummer": "^2.4.3",
+    "strummer-middleware": "^1.1.0"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "context",
+      "before",
+      "beforeEach",
+      "after",
+      "afterEach",
+      "it",
+      "xit",
+      "expect"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+
+  "appName": "$APP_NAME",
+
+  "logging": {
+    "stdout": "enabled",
+    "level": "$LOGGING_LEVEL"
+  },
+
+  "server": {
+    "port": 8080,
+    "baseURL": "$BASE_URL"
+  },
+
+  "corsOrigins": "$CORS_ORIGINS",
+
+  "trakt": {
+    "apiKey": "$TRAKT_API_KEY"
+  }
+
+}

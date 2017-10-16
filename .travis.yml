@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "6"
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+env:
+    global:
+      - CXX=g++-4.8 NODE_ENV="test"
+      - BASE_URL="http://localhost:3001"
+      - SALT="./keys/user_checksum.salt"
+      - APP_NAME="Keno API service"
+
+
+before_script:
+  - cp ./config.example.json ./config.json
