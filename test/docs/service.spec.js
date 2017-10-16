@@ -12,8 +12,8 @@ describe('Documentation', () => {
 
   it('Search movies and shows by title', done => {
     nock('https://api.trakt.tv')
-    .get('/search/movie,show?query=thrones')
-    .reply(200, samples.traktSearch)
+      .get('/search/movie,show?query=thrones')
+      .reply(200, samples.traktSearch)
 
     request(service)
       .get('/search?title=thrones')
@@ -25,8 +25,8 @@ describe('Documentation', () => {
 
   it('Show movie or show details', done => {
     nock('https://api.themoviedb.org')
-    .get(/\/3\/find\/.+/i)
-    .reply(200, samples.tmdbShow)
+      .get(/\/3\/find\/.+/i)
+      .reply(200, samples.tmdbShow)
 
     request(service)
       .get('/show?id=tt0944947')
