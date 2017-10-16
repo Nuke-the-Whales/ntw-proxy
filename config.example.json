@@ -16,6 +16,10 @@
 
   "trakt": {
     "apiKey": "$TRAKT_API_KEY"
+  },
+
+  "tmdb": {
+    "apiKey": "$TMDB_API_KEY"
   }
 
 }
