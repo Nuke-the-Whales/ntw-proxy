@@ -6,17 +6,17 @@ const validation = require('./validation')
 const config = require('../../config')
 const constants = require('../../constants')
 
-const { searchUrl } = constants
+const { updatesUrl } = constants
 
-const searchHeaders = {
+const updateHeaders = {
   'Content-Type': 'application/json',
   'trakt-api-version': '2',
   'trakt-api-key': config.trakt.apiKey
 }
 
 const searchAll = (req, res, next) => {
-  const url = `${searchUrl}${req.query.title}`
-  const headers = searchHeaders
+  const url = `${updatesUrl}${req.query.date}?limit=100`
+  const headers = updateHeaders
 
   request({ url, headers }, function (err, traktResponse, body) {
     if (err) return next(err)
@@ -28,12 +28,12 @@ const searchAll = (req, res, next) => {
     }
 
     const result = body
-      .filter(item => item[item.type].ids.imdb)
+      .filter(item => item.show.ids.imdb)
       .map(item => {
-        item.imdb = item[item.type].ids.imdb
-        item.title = item[item.type].title
-        item.year = item[item.type].year
-        delete item[item.type]
+        item.imdb = item.show.ids.imdb
+        item.title = item.show.title
+        item.year = item.show.year
+        delete item.show
         return item
       })
 
@@ -41,6 +41,6 @@ const searchAll = (req, res, next) => {
   });
 }
 
-service.get('/search', validation, searchAll)
+service.get('/tv-updates', validation, searchAll)
 
 module.exports = service

@@ -1,5 +1,7 @@
 'use strict'
 
 module.exports = {
-  search: require('./search')
+  search: require('./search'),
+  show: require('./show'),
+  updates: require('./updates')
 }

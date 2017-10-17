@@ -23,6 +23,19 @@ describe('Documentation', () => {
       })
   })
 
+  it('Get tv shows update since specific date', done => {
+    nock('https://api.trakt.tv')
+      .get('/shows/updates/2017-05-23?limit=100')
+      .reply(200, samples.traktTvUpdates)
+
+    request(service)
+      .get('/tv-updates?date=2017-05-23')
+      .end((err, res) => {
+        expect(err).to.not.be.ok
+        done()
+      })
+  })
+
   it('Show movie or show details', done => {
     nock('https://api.themoviedb.org')
       .get(/\/3\/find\/.+/i)
