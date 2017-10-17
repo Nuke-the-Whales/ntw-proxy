@@ -25,7 +25,7 @@ app.use(middleware.errorHandler)
 module.exports = app
 
 module.exports.start = () => {
-  return app.listen(config.server.port, function () {
+  return app.listen(process.env.PORT, function () {
     log.info(`Running service on port ${config.server.port}...`)
   })
 }
