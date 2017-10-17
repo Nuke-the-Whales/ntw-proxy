@@ -1,0 +1,25 @@
+{
+
+  "appName": "$APP_NAME",
+
+  "logging": {
+    "stdout": "enabled",
+    "level": "$LOGGING_LEVEL"
+  },
+
+  "server": {
+    "port": 8080,
+    "baseURL": "$BASE_URL"
+  },
+
+  "corsOrigins": "$CORS_ORIGINS",
+
+  "trakt": {
+    "apiKey": "d27209f166c5449926ace002d90ae0d1d7e3df59a645b8dfe1520ce480d06a19"
+  },
+
+  "tmdb": {
+    "apiKey": "bb76867c6cf8f654a145dc60b172fdc5"
+  }
+
+}
