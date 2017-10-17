@@ -26,7 +26,8 @@
     "request": "^2.83.0",
     "statuses": "^1.3.0",
     "strummer": "^2.4.3",
-    "strummer-middleware": "^1.1.0"
+    "strummer-middleware": "^1.1.0",
+    "mock-users": "https://github.com/Nuke-the-Whales/mock-users.git"
   },
   "standard": {
     "globals": [
