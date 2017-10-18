@@ -20,6 +20,11 @@
 
   "tmdb": {
     "apiKey": "bb76867c6cf8f654a145dc60b172fdc5"
+  },
+
+  "rutracker": {
+    "username": "_marrrakonda_",
+    "password": "_Inter2359-"
   }
 
 }

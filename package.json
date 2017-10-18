@@ -26,6 +26,7 @@
     "mock-users": "https://github.com/Nuke-the-Whales/mock-users.git",
     "moment": "^2.19.1",
     "request": "^2.83.0",
+    "rutracker-api": "^0.2.0",
     "statuses": "^1.3.0",
     "strummer": "^2.4.3",
     "strummer-middleware": "^1.1.0"

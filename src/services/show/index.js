@@ -2,16 +2,32 @@
 
 const request = require('request')
 const service = require('express')()
+const RutrackerAPI = require('rutracker-api');
 const validation = require('./validation')
 const config = require('../../config')
 const constants = require('../../constants')
+
+const rutracker = new RutrackerAPI({
+  username: config.rutracker.username,
+  password: config.rutracker.password
+})
+
+rutracker.on('login', function (err, res) {
+  console.log('We\'re on rutracker ;)')
+})
 
 const { showUrl, posterUrl } = constants
 
 const showQueries = {
     external_source: 'imdb_id',
-    language: 'en-US',
+    language: 'ru',
     api_key: config.tmdb.apiKey
+}
+
+function processTorrents (torrents) {
+  let results = torrents.sort((a, b) => parseInt(b.seeds) - parseInt(a.seeds))
+  results = results.slice(0, 4)
+  return results
 }
 
 const showDetails = (req, res, next) => {
@@ -29,11 +45,19 @@ const showDetails = (req, res, next) => {
 
     const result = body.movie_results[0] || body.tv_results[0] || null
 
-    if (result && result.poster_path) {
-      result.poster = `${posterUrl}${result.poster_path}`
+    if (!result) return res.json(null)
+
+    const query = result.name
+    const callback = (torrents) => {
+      const processedTorrents = processTorrents(torrents)
+      result.torrents = torrents
+      if (result.poster_path) {
+        result.poster = `${posterUrl}${result.poster_path}`
+      }
+      return res.json(result)
     }
 
-    return res.json(result)
+    rutracker.search(query, callback)
   });
 }
 

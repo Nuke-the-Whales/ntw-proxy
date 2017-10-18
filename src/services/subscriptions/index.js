@@ -38,6 +38,8 @@ const getUserUpdates = (req, res, next) => {
 
 }
 
+const getUserSubscriptions = () => {}
+
 service.post('/subscriptions', validation.post, addSubscription)
 service.get('/subscriptions', validation.get, getUserUpdates)
 
