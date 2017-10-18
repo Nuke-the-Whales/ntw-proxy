@@ -25,6 +25,16 @@
   "rutracker": {
     "username": "_marrrakonda_",
     "password": "_Inter2359-"
+  },
+
+  "imgur": {
+    "id": "b522327a1e6cef0",
+    "secret": "4cb07ac76d348aa9bd006e14665afb9cff570486"
+  },
+
+  "google": {
+    "cseId": "018444463665243025195:mtyxwnde2ou",
+    "apiKey": "AIzaSyAuYllAIcLWLGNUEh2Vj6blP_rQ2Mpyr1k"
   }
 
 }

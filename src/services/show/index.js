@@ -16,6 +16,10 @@ rutracker.on('login', function (err, res) {
   console.log('We\'re on rutracker ;)')
 })
 
+rutracker.on('error', function (err, res) {
+  console.log('Cant connect to rutracker, are you browsing from Russia? :)')
+})
+
 const { showUrl, posterUrl } = constants
 
 const showQueries = {
