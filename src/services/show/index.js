@@ -24,9 +24,11 @@ const showQueries = {
     api_key: config.tmdb.apiKey
 }
 
+const MAX_TORRENTS = 5
+
 function processTorrents (torrents) {
   let results = torrents.sort((a, b) => parseInt(b.seeds) - parseInt(a.seeds))
-  results = results.slice(0, 4)
+  results = results.slice(0, 5)
   return results
 }
 
