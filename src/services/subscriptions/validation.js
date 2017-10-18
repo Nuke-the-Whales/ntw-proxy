@@ -11,7 +11,7 @@ module.exports.post = sware({
 })
 
 module.exports.get = sware({
-  body: s({
+  query: s({
     userId: 'string'
   })
 })

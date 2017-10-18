@@ -14,17 +14,17 @@ const updateHeaders = {
   'trakt-api-key': config.trakt.apiKey
 }
 
-const searchAll = (req, res, next) => {
-  const url = `${updatesUrl}${req.query.date}?limit=100`
+function getShowUpdates(date, callback) {
+  const url = `${updatesUrl}${date}?limit=100`
   const headers = updateHeaders
 
   request({ url, headers }, function (err, traktResponse, body) {
-    if (err) return next(err)
+    if (err) return callback(err)
 
     try {
       body = JSON.parse(body)
     } catch (e) {
-      next(e)
+      return callback(e)
     }
 
     const result = body
@@ -37,10 +37,20 @@ const searchAll = (req, res, next) => {
         return item
       })
 
-    return res.json(result)
+    return callback(null, result)
   });
 }
 
-service.get('/tv-updates', validation, searchAll)
+const searchUpdates = (req, res, next) => {
+  getShowUpdates(req.query.date, function (err, updates) {
+    if (err) return next(err)
+
+    return res.json(udates)
+  })
+}
+
+service.get('/tv-updates', validation, searchUpdates)
 
 module.exports = service
+
+module.exports.getShowUpdates = getShowUpdates
