@@ -1,11 +1,11 @@
 {
-  "name": "api-service-keno-withdrawal",
+  "name": "ntw-proxy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "documentation": "./node_modules/.bin/mocha --reporter supersamples './test/docs'",
+    "docs": "./node_modules/.bin/mocha --reporter supersamples './test/docs'",
     "test": "./node_modules/mocha/bin/mocha './test/**/*.spec.js' && ./node_modules/standard/bin/cmd.js"
   },
   "author": "",
