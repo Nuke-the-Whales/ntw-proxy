@@ -50,7 +50,7 @@ const showDetails = (req, res, next) => {
     const query = result.name
     const callback = (torrents) => {
       const processedTorrents = processTorrents(torrents)
-      result.torrents = torrents
+      result.torrents = processedTorrents
       if (result.poster_path) {
         result.poster = `${posterUrl}${result.poster_path}`
       }
