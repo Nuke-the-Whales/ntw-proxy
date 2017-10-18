@@ -24,13 +24,16 @@ const addSubscription = (req, res, next) => {
 }
 
 const getUserUpdates = (req, res, next) => {
-  const { userId } = req.query.userId;
-  const date = moment().format('YYYY-MM-DD')
+  const { userId } = req.query;
+  const date = moment().subtract(1, 'year').format('YYYY-MM-DD')
   getShowUpdates(date, function (err, updates) {
     if (err) return next(err)
 
-    console.log('<>>>', updates)
-    return res.status(200)
+    const userSubscriptions = Object.keys(mockUsers.getUserSubscriptions(userId))
+
+    const userUpdates = updates.filter(item => userSubscriptions.includes(item.imdb))
+
+    return res.json(userUpdates)
   })
 
 }
