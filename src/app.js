@@ -26,6 +26,6 @@ module.exports = app
 
 module.exports.start = () => {
   return app.listen(process.env.PORT, function () {
-    log.info(`Running service on port ${config.server.port}...`)
+    log.info(`Running service on port ${process.env.PORT}...`)
   })
 }
