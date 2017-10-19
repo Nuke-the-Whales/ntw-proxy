@@ -23,6 +23,7 @@
     "cjson": "^0.4.0",
     "cors": "^2.8.1",
     "express": "^4.14.0",
+    "google-images": "^2.1.0",
     "mock-users": "https://github.com/Nuke-the-Whales/mock-users.git",
     "moment": "^2.19.1",
     "request": "^2.83.0",
