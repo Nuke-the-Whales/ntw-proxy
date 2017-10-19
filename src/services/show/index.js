@@ -20,12 +20,18 @@ rutracker.on('error', function (err, res) {
   console.log('Cant connect to rutracker, are you browsing from Russia? :)')
 })
 
-const { showUrl, posterUrl } = constants
+const { showUrl, posterUrl, lastEpisodeUrl } = constants
 
 const showQueries = {
     external_source: 'imdb_id',
     language: 'ru',
     api_key: config.tmdb.apiKey
+}
+
+const lastEpisodeHeaders = {
+  'Content-Type': 'application/json',
+  'trakt-api-version': '2',
+  'trakt-api-key': config.trakt.apiKey
 }
 
 const MAX_TORRENTS = 5
@@ -34,6 +40,27 @@ function processTorrents (torrents) {
   let results = torrents.sort((a, b) => parseInt(b.seeds) - parseInt(a.seeds))
   results = results.slice(0, 5)
   return results
+}
+
+const lastEpisode = (req, res, next) => {
+  const url = `${lastEpisodeUrl}${req.query.id}/last_episode`
+  const headers = lastEpisodeHeaders
+
+  request({ url, headers }, function (err, tmdbResponse, body) {
+    if (err) return next(err)
+
+    try {
+      body = JSON.parse(body)
+    } catch (e) {
+      return next(e)
+    }
+
+    const result = body
+    result.imdb = result.ids.imdb
+    delete result.ids
+
+    return res.json(result)
+  });
 }
 
 const showDetails = (req, res, next) => {
@@ -68,5 +95,6 @@ const showDetails = (req, res, next) => {
 }
 
 service.get('/show', validation, showDetails)
+service.get('/show/last', validation, lastEpisode)
 
 module.exports = service
