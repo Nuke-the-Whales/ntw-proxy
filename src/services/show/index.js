@@ -10,7 +10,7 @@ const GoogleImages = require('google-images')
 
 const MAX_MEME_IMG_WIDTH = 1024
 
-const client = new GoogleImages(config.google.cseId, config.google.apiKey);
+const googleImages = new GoogleImages(config.google.cseId, config.google.apiKey)
 
 const rutracker = new RutrackerAPI({
   username: config.rutracker.username,
@@ -92,7 +92,8 @@ const showDetails = (req, res, next) => {
       if (result.poster_path) {
         result.poster = `${posterUrl}${result.poster_path}`
       }
-      client.search(`${result.original_name} meme`)
+      
+      googleImages.search(`${result.original_name} meme`)
         .then(images => {
           const memes = images
             .filter(img => img.width <= MAX_MEME_IMG_WIDTH)
