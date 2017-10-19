@@ -14,16 +14,17 @@ const updateHeaders = {
   'trakt-api-key': config.trakt.apiKey
 }
 
-function requestUpdates (url, headers, page, callback) {
-  console.log('Scanning page', page)
-  url = `${url}&page=${page}`
+const getUpdates = (req, res, next) => {
+  const url = `${updatesUrl}${req.query.date}?limit=100`
+  const headers = updateHeaders
+
   request({ url, headers }, function (err, traktResponse, body) {
-    if (err) return callback(err)
+    if (err) return next(err)
 
     try {
       body = JSON.parse(body)
     } catch (e) {
-      return callback(e)
+      next(e)
     }
 
     const result = body
@@ -36,41 +37,10 @@ function requestUpdates (url, headers, page, callback) {
         return item
       })
 
-    const pagination = {
-      page: parseInt(traktResponse.headers['x-pagination-page']) || 1,
-      pageCount: parseInt(traktResponse.headers['x-pagination-page-count']) || 1
-    }
-
-    return callback(null, pagination, result)
+    return res.json(result)
   });
 }
 
-function getShowUpdates(date, callback) {
-  const url = `${updatesUrl}${date}?limit=100`
-  const headers = updateHeaders
-
-  let page = 1
-
-  requestUpdates(url, headers, page, function (err, pagination, result) {
-    if (err) return callback(err)
-
-    if (pagination.page < pagination.pageCount) {
-      page += 1
-      requestUpdates()
-    }
-  })
-}
-
-const searchUpdates = (req, res, next) => {
-  getShowUpdates(req.query.date, function (err, updates) {
-    if (err) return next(err)
-
-    return res.json(updates)
-  })
-}
-
-service.get('/tv-updates', validation, searchUpdates)
+service.get('/tv-updates', validation, getUpdates)
 
 module.exports = service
-
-module.exports.getShowUpdates = getShowUpdates
