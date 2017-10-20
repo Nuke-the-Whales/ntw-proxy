@@ -17,7 +17,7 @@ const updateHeaders = {
 }
 
 const addSubscription = (req, res, next) => {
-  const { userId, showId, showName } = req.body;
+  const { userId, showId, showName } = req.body
   mockUsers.addSubscription(userId, showId, showName)
 
   return res.status(200).send()
